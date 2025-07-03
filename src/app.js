@@ -1,17 +1,51 @@
 document.addEventListener("alpine:init", () => {
-  Alpine.data("products", () => ({
-    items: [
-      { id: 1, name: "Bag ", img: "bag3d-1.png", price: 20000 },
-      { id: 2, name: "Bag ", img: "bag3d-2.png", price: 30000 },
-      { id: 3, name: "Bag ", img: "bag3d-3.png", price: 40000 },
-      { id: 4, name: "Bag ", img: "bag3d-4.png", price: 50000 },
-      { id: 5, name: "Bag ", img: "bag3d-5.png", price: 60000 },
-      { id: 6, name: "Bag ", img: "bag3d-6.png", price: 70000 },
-      { id: 7, name: "Bag ", img: "bag3d-7.png", price: 80000 },
-      { id: 8, name: "Bag ", img: "bag3d-8.png", price: 90000 },
-      { id: 9, name: "Bag ", img: "bag3d-9.png", price: 100000 },
-    ],
-  }));
+  // Alpine.data("products", () => ({
+  //   items: [
+  //     { id: 1, name: "Bag ", img: "bag3d-1.png", price: 20000 },
+  //     { id: 2, name: "Bag ", img: "bag3d-2.png", price: 30000 },
+  //     { id: 3, name: "Bag ", img: "bag3d-3.png", price: 40000 },
+  //     { id: 4, name: "Bag ", img: "bag3d-4.png", price: 50000 },
+  //     { id: 5, name: "Bag ", img: "bag3d-5.png", price: 60000 },
+  //     { id: 6, name: "Bag ", img: "bag3d-6.png", price: 70000 },
+  //     { id: 7, name: "Bag ", img: "bag3d-7.png", price: 80000 },
+  //     { id: 8, name: "Bag ", img: "bag3d-8.png", price: 90000 },
+  //     { id: 9, name: "Bag ", img: "bag3d-9.png", price: 100000 },
+  //   ],
+  // }));
+
+Alpine.data("bags", () => ({
+  categories: [
+    {
+      name: "products",
+      items: [
+        { id: 1, name: "Bag ", img: "bag3d-1.png", price: 20000 },
+        { id: 2, name: "Bag ", img: "bag3d-2.png", price: 30000 },
+        { id: 3, name: "Bag ", img: "bag3d-3.png", price: 40000 },
+        { id: 4, name: "Bag ", img: "bag3d-4.png", price: 50000 },
+        { id: 5, name: "Bag ", img: "bag3d-5.png", price: 60000 },
+        { id: 6, name: "Bag ", img: "bag3d-6.png", price: 70000 },
+        { id: 7, name: "Bag ", img: "bag3d-7.png", price: 80000 },
+        { id: 8, name: "Bag ", img: "bag3d-8.png", price: 90000 },
+        { id: 9, name: "Bag ", img: "bag3d-9.png", price: 100000 },
+      ],
+    },
+    {
+      name: "menu",
+      items: [
+        { id: 1, name: "Luna Elegant", img: "baggie-1.png", price: 45000 },
+        { id: 2, name: "Violetta Tote", img: "baggie-2.png", price: 520000 },
+        { id: 3, name: "Scarlett Satchel", img: "baggie-3.png", price: 450000 },
+        { id: 4, name: "Olive Clutch", img: "baggie-4.png", price: 420000 },
+        { id: 5, name: "Amber Classic", img: "baggie-5.png", price: 500000 },
+        { id: 6, name: "Sienna Everyday", img: "baggie-6.png", price: 460000 },
+        { id: 7, name: "Milo Mini", img: "baggie-7.png", price: 350000 },
+        { id: 8, name: "Aqua Carryall", img: "baggie-8.png", price: 530000 },
+        { id: 9, name: "Hazel Chicc", img: "baggie-9.png", price: 470000 },
+      ],
+    },
+  ],
+}));
+
 
   Alpine.store("cart", {
     items: [],
@@ -140,6 +174,3 @@ const rupiah = (number) => {
     minimumFractionDigits: 0,
   }).format(number);
 };
-
-// https://www.youtube.com/watch?v=Na4330FzthI&list=PLFIM0718LjIWaNi4oDdN49FTlznrWU9w2&index=4
-// 19.10

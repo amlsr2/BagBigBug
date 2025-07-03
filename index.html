@@ -21,7 +21,7 @@
     <script src="https://unpkg.com/feather-icons"></script>
 
     <!-- CSS MY STYLE -->
-    <link rel="stylesheet" href="./CSS/style.css" />
+    <link rel="stylesheet" href="/CSS/style.css" />
 
     <!-- AlpineJS -->
     <script
@@ -30,7 +30,7 @@
     ></script>
 
     <!-- App -->
-    <script src="src/app.js" async></script>
+    <script src="/src/app.js" async></script>
 
     <!-- Midtrans -->
     <!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
@@ -77,70 +77,79 @@
 
       <!-- shopping cart start -->
       <div class="shopping-cart">
-        <template
-          x-for="(item, index) in $store.cart.items"
-          x-on:keydown="index"
-        >
-          <div class="cart-item">
-            <img :src="`img/products/${item.img}`" :alt="item.name" />
-            <div class="item-detail">
-              <h3 x-text="item.name"></h3>
-              <div class="item-price">
-                <span x-text="rupiah(item.price)"></span> &times;
-                <button id="remove" @click="$store.cart.remove(item.id)">
-                  &minus;
-                </button>
-                <span x-text="item.quantity"></span>
-                <button id="add" @click="$store.cart.add(item)">&plus;</button>
-                &equals;
-                <span x-text="rupiah(item.total)"></span>
+        <div class="cart-scroll-container">
+          <template
+            x-for="(item, index) in $store.cart.items"
+            x-on:keydown="index"
+          >
+            <div class="cart-item">
+              <img :src="`img/products/${item.img}`" :alt="item.name" />
+              <div class="item-detail">
+                <h3 x-text="item.name"></h3>
+                <div class="item-price">
+                  <span x-text="rupiah(item.price)"></span> &times;
+                  <button id="remove" @click="$store.cart.remove(item.id)">
+                    &minus;
+                  </button>
+                  <span x-text="item.quantity"></span>
+                  <button id="add" @click="$store.cart.add(item)">
+                    &plus;
+                  </button>
+                  &equals;
+                  <span x-text="rupiah(item.total)"></span>
+                </div>
               </div>
+              <!-- <i data-feather="trash-2" class="remove-item"></i> -->
             </div>
-            <!-- <i data-feather="trash-2" class="remove-item"></i> -->
+          </template>
+          <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem">
+            Cart is Empty
+          </h4>
+          <h4 x-show="$store.cart.items.length">
+            Total : <span x-text="rupiah($store.cart.total)"></span>
+          </h4>
+
+          <div class="form-container" x-show="$store.cart.items.length">
+            <form action="" id="checkoutForm">
+              <input
+                type="hidden"
+                name="items"
+                x-model="JSON.stringify($store.cart.items)"
+              />
+              <input type="hidden" name="total" x-model="$store.cart.total" />
+
+              <h5>Costumer Detail</h5>
+
+              <label for="name">
+                <span>Name</span>
+                <input type="text" name="name" id="name" />
+              </label>
+
+              <label for="email">
+                <span>Email</span>
+                <input type="email" name="email" id="email" />
+              </label>
+
+              <label for="phone">
+                <span>Phone</span>
+                <input
+                  type="number"
+                  name="phone"
+                  id="phone"
+                  autocomplete="off"
+                />
+              </label>
+
+              <button
+                class="checkout-button disabled"
+                type="submit"
+                id="checkout-button"
+                value="checkout"
+              >
+                Checkout
+              </button>
+            </form>
           </div>
-        </template>
-        <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem">
-          Cart is Empty
-        </h4>
-        <h4 x-show="$store.cart.items.length">
-          Total : <span x-text="rupiah($store.cart.total)"></span>
-        </h4>
-
-        <div class="form-container" x-show="$store.cart.items.length">
-          <form action="" id="checkoutForm">
-            <input
-              type="hidden"
-              name="items"
-              x-model="JSON.stringify($store.cart.items)"
-            />
-            <input type="hidden" name="total" x-model="$store.cart.total" />
-
-            <h5>Costumer Detail</h5>
-
-            <label for="name">
-              <span>Name</span>
-              <input type="text" name="name" id="name" />
-            </label>
-
-            <label for="email">
-              <span>Email</span>
-              <input type="email" name="email" id="email" />
-            </label>
-
-            <label for="phone">
-              <span>Phone</span>
-              <input type="number" name="phone" id="phone" autocomplete="off" />
-            </label>
-
-            <button
-              class="checkout-button disabled"
-              type="submit"
-              id="checkout-button"
-              value="checkout"
-            >
-              Checkout
-            </button>
-          </form>
         </div>
       </div>
       <!-- shopping cart end -->
@@ -153,10 +162,10 @@
         <main class="content">
           <h1>Mari Beli <span>Bag</span></h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat,
-            sit?
+            Tas girly gemesin yang siap nemenin outfit kamu biar makin on point
+            tiap hari!
           </p>
-          <!-- <a href="#" class="cta">Beli Sekarang</a> -->
+          <a href="#products" class="cta">Beli Sekarang</a>
         </main>
       </div>
     </section>
@@ -168,19 +177,21 @@
 
       <div class="row">
         <div class="about-img">
-          <img src="./img/bg-2.jpg" alt="Tentang Kami" />
+          <img src="/img/bg-2.jpg" alt="Tentang Kami" />
         </div>
 
         <div class="content">
-          <h3>Kenapa beli disini aja?</h3>
+          <h3>
+            Masih ragu belanja di sini? <br />
+            Nih kita kasih alasan kenapa kamu bakal suka banget sama tas dari
+            BagBig<span>Bug</span>!
+          </h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam
-            deserunt porro voluptas, natus quasi sapiente?
-          </p>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque
-            quasi laboriosam sit obcaecati optio doloremque cum exercitationem
-            qui repellendus harum!
+            Karena kita tuh bukan sekadar jual tas, tapi jual vibes. Tas-tas di
+            sini tuh aesthetic, girly, dan siap upgrade OOTD kamu. Belinya
+            gampang, dikirim cepet, CS-nya ngertiin kamu banget. Plus, sering
+            ada diskon & bonus cute-cute gitu. Trust us, once you buy, you’ll be
+            back for more.
           </p>
         </div>
       </div>
@@ -188,74 +199,42 @@
     <!-- About Section End -->
 
     <!-- Menu Section Start -->
-    <section id="menu" class="menu">
+    <section id="menu" class="menu" x-data="bags">
       <h2><span>Menu</span> Kami</h2>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque ipsa
-        dolor mollitia quis laborum veritatis.
+        Koleksi eksklusif dengan desain girly, stylish, dan siap menyempurnakan
+        penampilanmu setiap hari.
       </p>
 
       <div class="row">
-        <div class="menu-card">
-          <img src="/img/menu/baggie-1.png" alt="Bag" class="menu-card-img" />
-          <h3 class="menu-card-title">- Bag -</h3>
-          <p class="menu-card-price">IDR 500K</p>
-        </div>
-        <div class="menu-card">
-          <img src="/img/menu/baggie-2.png" alt="Bag" class="menu-card-img" />
-          <h3 class="menu-card-title">- Bag -</h3>
-          <p class="menu-card-price">IDR 500K</p>
-        </div>
-        <div class="menu-card">
-          <img src="/img/menu/baggie-3.png" alt="Bag" class="menu-card-img" />
-          <h3 class="menu-card-title">- Bag -</h3>
-          <p class="menu-card-price">IDR 500K</p>
-        </div>
-        <div class="menu-card">
-          <img src="/img/menu/baggie-4.png" alt="Bag" class="menu-card-img" />
-          <h3 class="menu-card-title">- Bag -</h3>
-          <p class="menu-card-price">IDR 500K</p>
-        </div>
-        <div class="menu-card">
-          <img src="/img/menu/baggie-5.png" alt="Bag" class="menu-card-img" />
-          <h3 class="menu-card-title">- Bag -</h3>
-          <p class="menu-card-price">IDR 500K</p>
-        </div>
-        <div class="menu-card">
-          <img src="/img/menu/baggie-6.png" alt="Bag" class="menu-card-img" />
-          <h3 class="menu-card-title">- Bag -</h3>
-          <p class="menu-card-price">IDR 500K</p>
-        </div>
-        <div class="menu-card">
-          <img src="/img/menu/baggie-7.png" alt="Bag" class="menu-card-img" />
-          <h3 class="menu-card-title">- Bag -</h3>
-          <p class="menu-card-price">IDR 500K</p>
-        </div>
-        <div class="menu-card">
-          <img src="/img/menu/baggie-8.png" alt="Bag" class="menu-card-img" />
-          <h3 class="menu-card-title">- Bag -</h3>
-          <p class="menu-card-price">IDR 500K</p>
-        </div>
-        <div class="menu-card">
-          <img src="/img/menu/baggie-9.png" alt="Bag" class="menu-card-img" />
-          <h3 class="menu-card-title">- Bag -</h3>
-          <p class="menu-card-price">IDR 500K</p>
-        </div>
+        <template x-for="item in categories[1].items" :key="item.id">
+          <div class="menu-card">
+            <img
+              :src="`img/menu/${item.img}`"
+              :alt="item.name"
+              class="menu-card-img"
+            />
+            <h3 class="menu-card-title" x-text="item.name"></h3>
+            <p class="menu-card-price" x-text="rupiah(item.price)"></p>
+          </div>
+        </template>
       </div>
     </section>
     <!-- Menu Section End -->
 
     <!-- products section start -->
-    <section class="products" id="products" x-data="products">
+    <section class="products" id="products" x-data="bags">
       <h2><span>Produk Unggulan</span> Kami</h2>
       <!-- kalo masih ada masalah di tulisan lorem yg ga mau ke tengah, coba liat di menit ke 26.00-28.00 -->
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui excepturi
-        laboriosam nisi ea recusandae quasi.
+        Dari tampilan kasual hingga formal, koleksi unggulan kami dirancang
+        untuk melengkapi gaya femininmu setiap hari.<br />Pilih tas favoritmu
+        sekarang!
       </p>
 
       <div class="row">
-        <template x-for="(item, index) in items" x-key="index">
+        <!-- <template x-for="(item, index) in items" x-key="index"> -->
+        <template x-for="item in categories[0].items" :key="item.id">
           <div class="product-card">
             <div class="product-icons">
               <a href="#" @click.prevent="$store.cart.add(item)">
@@ -362,13 +341,15 @@
     <section id="contact" class="contact">
       <h2><span>Kontak</span> Kami</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque accusamus
-        sequi nesciunt explicabo a! Ea temporibus ipsam doloribus aut quam!
+        Punya pertanyaan, saran, atau butuh bantuan? Kami di sini untukmu!
+        Jangan ragu untuk menghubungi tim kami melalui form, email, atau media
+        sosial. Kami siap membantu dengan sepenuh hati agar pengalaman belanjamu
+        makin menyenangkan!
       </p>
 
       <div class="row">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253497.32196632252!2d107.47834272788094!3d-6.903080289308855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6398252477f%3A0x146a1f93d3e815b2!2sBandung%2C%20Kota%20Bandung%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1717185974997!5m2!1sid!2sid"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d126317.00000000001!2d106.75885!3d-6.168329!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f328e68d4ad1%3A0x0!2sJakarta%20Barat!5e0!3m2!1sen!2sid!4v1699999999999!5m2!1sen!2sid"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
@@ -389,7 +370,11 @@
             <i data-feather="phone"></i>
             <input type="text" placeholder="no hp" />
           </div>
-          <button type="submit" class="btn">kirim pesam</button>
+          <div class="input-group">
+            <i data-feather="type"></i>
+            <input type="text" placeholder="ketik pesanmu disini" />
+          </div>
+          <button type="submit" class="btn">kirim pesan</button>
         </form>
       </div>
     </section>
@@ -404,9 +389,10 @@
       </div>
 
       <div class="links">
-        <a href="#home">Home</a>
+        <a href="#">Home</a>
         <a href="#about">Tentang Kami</a>
         <a href="#menu">Menu</a>
+        <a href="#products">Produk</a>
         <a href="#contact">Kontak</a>
       </div>
 
