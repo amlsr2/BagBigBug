@@ -1,4 +1,5 @@
 :root {
+  --white: rgb(255, 255, 255);
   --primary: rgb(252, 182, 193);
   --bg: #010101;
   --darkpink: rgb(255, 149, 165);
@@ -28,7 +29,6 @@ body {
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-
 /* navbar */
 .navbar {
   display: flex;
@@ -91,8 +91,6 @@ body {
 #hamburger-menu {
   display: none;
 }
-
-/* ============================================================================== */
 
 /* navbar search form */
 .navbar .search-form {
@@ -158,7 +156,7 @@ body {
   transition: 0.3s linear;
 } */
 
-/* ------------------------------------------------------------------------- added start ------------------------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- added start */
 .shopping-cart {
   position: absolute;
   top: 100%;
@@ -190,7 +188,7 @@ body {
   background-color: #ccc;
   border-radius: 3px;
 }
-/* --------------------------------------------------------------------------- added end ----------------------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- added end */
 
 .shopping-cart.active {
   right: 0;
@@ -248,7 +246,6 @@ body {
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-
 /* Checkout Form */
 .form-container {
   width: 100%;
@@ -304,7 +301,6 @@ body {
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-
 /* Hero Section */
 .hero {
   min-height: 100vh;
@@ -358,18 +354,33 @@ body {
   line-height: 1.2;
 }
 
-.hero .content h1 span {
-  color: var(--primary);
-}
-
 .hero .content p {
   font-size: 1.6rem;
   margin-top: 1rem;
   line-height: 1.4;
   font-weight: 100;
-  color: rgb(252, 182, 193);
+  color: var(--white);
   text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
   /* mix-blend-mode: difference; */
+}
+
+.hero .content h4 {
+  /* font-size: 1.6rem; */
+  margin-top: 1rem;
+  line-height: 1.4;
+  font-weight: 100;
+  color: var(--pinktransparent);
+  text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+  /* mix-blend-mode: difference; */
+}
+
+.hero .content p span,
+.hero .content h1 span {
+  color: var(--primary);
+}
+
+.hero .content .cta span {
+  color: var(--darkpink);
 }
 
 .hero .content .cta {
@@ -377,17 +388,21 @@ body {
   display: inline-block;
   padding: 1rem 2rem;
   font-size: 1.4rem;
-  color: var(--darkpink);
+  color: var(--white);
   background-color: var(--pinktransparent);
   border-radius: 2rem;
   box-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-/* About Section & ada Menu Section juga */
+/* About Section */
 .about h3 span {
-color: var(--primary);
+  color: var(--primary);
 }
+
+ .about .content p span {
+    color: var(--primary);
+  }
 
 .about,
 .menu,
@@ -447,7 +462,7 @@ color: var(--primary);
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-/* Menu Section & ada Contact Section juga */
+/* Menu Section  */
 .menu h2,
 .contact h2 {
   margin-bottom: 1rem;
@@ -457,9 +472,10 @@ color: var(--primary);
 .products p,
 .contact p {
   text-align: center;
-  max-width: 30rem;
+  max-width: 70rem; /* tulisan p setelah judul section */
   margin: auto;
   font-weight: 100;
+  font-size: 1.1rem;
   line-height: 1.6;
   flex-wrap: wrap;
 }
@@ -473,16 +489,15 @@ color: var(--primary);
 }
 
 .menu .row .menu-card {
-  width: 200px; /* ukuran card img pc*/
-  /* width: 100px; ukuran card img phone  ==============================================================================================================================================================================*/
+  width: 200px; /* ukuran gambar menu */
   text-align: center;
-  padding-bottom: 4rem;
-  margin: 1rem;
+  padding-bottom: 3rem;
+  margin: 0.5px; /* jarak antar img */
 }
 
 .menu .row .menu-card img {
   border-radius: 50%;
-  width: 100%; /* ukuran bulat img menu*/
+  width: 70%; /* ukuran bulat img menu*/
 }
 
 .menu .row .menu-card .menu-card-title {
@@ -493,8 +508,8 @@ color: var(--primary);
 /* products section */
 .products .row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 2rem;
   margin-top: 4rem;
   padding: 0 2rem;
 }
@@ -503,6 +518,7 @@ color: var(--primary);
   text-align: center;
   border: 1px solid #666;
   padding: 2rem;
+  border-radius: 3%;
 }
 
 .products .product-icons {
@@ -516,7 +532,8 @@ color: var(--primary);
   height: 4rem;
   color: #fff;
   margin: 0.3rem;
-  border: 1px solid #666;
+  border: 1px solid;
+  border-color: var(--white);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -525,7 +542,7 @@ color: var(--primary);
 
 .products .product-icons a:hover {
   background-color: var(--primary);
-  border: 1px solid var(--primary);
+  border: 1px solid;
 }
 
 .products .product-image {
@@ -533,25 +550,26 @@ color: var(--primary);
 }
 
 .products .product-image img {
-  height: 25rem;
+  height: 15rem;
+  border-radius: 5%;
 }
 
 .products .product-content h3 {
-  font-size: 2rem;
+  font-size: 1.3rem;
 }
 
 .products .product-stars {
-  font-size: 1.7rem;
-  padding: 0.8rem;
+  font-size: 1rem;
+  padding: 0.5rem;
   color: var(--primary);
 }
 
-.products .product-stars .star-full {
+/* .products .product-stars .star-full {
   fill: var(--primary);
-}
+} */
 
 .products .product-price {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
@@ -565,7 +583,7 @@ color: var(--primary);
 /* Contact Section */
 .contact .row {
   display: flex;
-  margin-top: 2rem;
+  margin: 3rem;
   background-color: #222;
   /* flex-wrap: wrap; */
 }
@@ -603,12 +621,13 @@ color: var(--primary);
   margin-top: 3rem;
   display: inline-block;
   padding: 1rem 3rem;
-  font-size: 1.7rem;
-  color: #fff;
-  background-color: var(--primary);
+  font-size: 2rem;
+  color: #000000;
+  background-color: var(--darkpink);
   cursor: pointer;
 }
 
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* Footer */
 footer {
   background-color: var(--darkpink);

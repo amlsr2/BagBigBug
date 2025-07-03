@@ -29,9 +29,6 @@
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
 
-    <!-- App -->
-    <script src="/src/app.js" async></script>
-
     <!-- Midtrans -->
     <!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
     <script
@@ -40,6 +37,10 @@
       data-client-key="Mid-client-KhETns1nWma7_Eo0"
     ></script>
     <!-- Note: replace with src="https://app.midtrans.com/snap/snap.js" for Production environment -->
+
+    <!-- Alpine data dan store -->
+    <script defer src="/src/app.js" async></script>
+    <!-- <script defer src="/src/app.js"></script> -->
   </head>
 
   <body>
@@ -160,12 +161,13 @@
     <section id="Home" class="hero">
       <div class="mask-container">
         <main class="content">
-          <h1>Mari Beli <span>Bag</span></h1>
+          <h1>One <span>Bag</span>, A Thousand <span>Styles</span></h1>
           <p>
-            Tas girly gemesin yang siap nemenin outfit kamu biar makin on point
-            tiap hari!
+            Tas girly gemesin yang siap nemenin outfit kamu biar makin
+            <span>on point</span> tiap hari!
           </p>
-          <a href="#products" class="cta">Beli Sekarang</a>
+          <h4>AMELIASARI810@GMAIL.COM</h4>
+          <a href="#products" class="cta">Beli <span>Sekarang</span></a>
         </main>
       </div>
     </section>
@@ -183,15 +185,16 @@
         <div class="content">
           <h3>
             Masih ragu belanja di sini? <br />
-            Nih kita kasih alasan kenapa kamu bakal suka banget sama tas dari
+            Nih kami kasih alasan kenapa kamu bakal suka banget sama tas dari
             BagBig<span>Bug</span>!
           </h3>
           <p>
-            Karena kita tuh bukan sekadar jual tas, tapi jual vibes. Tas-tas di
-            sini tuh aesthetic, girly, dan siap upgrade OOTD kamu. Belinya
-            gampang, dikirim cepet, CS-nya ngertiin kamu banget. Plus, sering
-            ada diskon & bonus cute-cute gitu. Trust us, once you buy, you’ll be
-            back for more.
+            Disini kami bukan sekadar jual tas, tapi juga jual vibes. Semua tas
+            di sini aesthetic, girly, dan siap upgrade OOTD kamu. Belinya
+            gampang, proses pengiriman cepat, dan CS-nya ngertiin kamu banget.
+            Plus, sering ada diskon & bonus cute-cute disini!.
+            <span>Trust us!</span>, once you buy,
+            <span>you’ll be back for more</span>.
           </p>
         </div>
       </div>
@@ -227,9 +230,9 @@
       <h2><span>Produk Unggulan</span> Kami</h2>
       <!-- kalo masih ada masalah di tulisan lorem yg ga mau ke tengah, coba liat di menit ke 26.00-28.00 -->
       <p>
-        Dari tampilan kasual hingga formal, koleksi unggulan kami dirancang
-        untuk melengkapi gaya femininmu setiap hari.<br />Pilih tas favoritmu
-        sekarang!
+        Dari tampilan kasual hingga formal, <br />koleksi unggulan kami
+        dirancang untuk melengkapi gaya femininmu setiap hari.<br />Pilih tas
+        favoritmu sekarang!
       </p>
 
       <div class="row">
@@ -342,9 +345,9 @@
       <h2><span>Kontak</span> Kami</h2>
       <p>
         Punya pertanyaan, saran, atau butuh bantuan? Kami di sini untukmu!
-        Jangan ragu untuk menghubungi tim kami melalui form, email, atau media
-        sosial. Kami siap membantu dengan sepenuh hati agar pengalaman belanjamu
-        makin menyenangkan!
+        <br />Jangan ragu untuk menghubungi tim kami melalui form, email, atau
+        media sosial. <br />Kami siap membantu dengan sepenuh hati agar
+        pengalaman belanjamu makin menyenangkan!
       </p>
 
       <div class="row">
@@ -383,9 +386,11 @@
     <!-- Footer Start -->
     <footer>
       <div class="socials">
-        <a href="#"> <id data-feather="instagram"></id></a>
-        <a href="#"> <id data-feather="twitter"></id></a>
-        <a href="#"> <id data-feather="facebook"></id></a>
+        <a href="https://www.instagram.com/wjmelly/">
+          <id data-feather="instagram"></id
+        ></a>
+        <a href="#products"> <id data-feather="twitter"></id></a>
+        <a href="#products"> <id data-feather="facebook"></id></a>
       </div>
 
       <div class="links">
@@ -397,7 +402,14 @@
       </div>
 
       <div class="credit">
-        <p>Created by <a href="">Amelia Sari</a>. | &copy; 2024.</p>
+        <p>
+          Website ini dibuat untuk menambah wawasan dan kreatifitas.
+          <br />
+          <br />
+          Created by <a href="https://www.instagram.com/wjmelly/">Amelia Sari</a>. | &copy;
+          2024.
+
+        </p>
       </div>
     </footer>
     <!-- Footer End -->
@@ -433,12 +445,16 @@
     </div>
     <!-- Modal Box Item Detail End -->
 
-    <!-- FEATHER ICON -->
-    <script>
+    <!-- Feather Icons -->
+    <script defer>
       feather.replace();
     </script>
 
-    <!-- MY JAVASCRIPT -->
-    <script src="./JS/script.js"></script>
+    <!-- Script interaktif -->
+    <script src="./JS/script.js" defer></script>
+
+    <!-- Alpine data dan store -->
+    <!-- <script src="/src/app.js" async></script> -->
+    <!-- <script src="/src/app.js" defer></script> -->
   </body>
 </html>
