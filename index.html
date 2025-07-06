@@ -23,13 +23,18 @@
     <!-- CSS MY STYLE -->
     <link rel="stylesheet" href="/CSS/style.css" />
 
+        <!-- Alpine data dan store -->
+    <script defer src="/src/app.js"></script>
+
     <!-- AlpineJS -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
     <!-- Alpine data dan store -->
-    <script src="/src/app.js" async></script>
-    <!-- <script defer src="/src/app.js"></script> -->
-    
+    <!-- <script src="/src/app.js" async></script> -->
+
     <!-- Midtrans -->
     <!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
     <script
@@ -199,7 +204,7 @@
     <!-- About Section End -->
 
     <!-- Menu Section Start -->
-    <section id="menu" class="menu" x-data="bags">
+    <section id="menu" class="menu" x-data="menus">
       <h2><span>Menu</span> Kami</h2>
       <p>
         Koleksi eksklusif dengan desain girly, stylish, dan siap menyempurnakan
@@ -207,7 +212,8 @@
       </p>
 
       <div class="row">
-        <template x-for="item in categories[1].items" :key="item.id">
+        <template x-for="(item, index) in items" x-key="index">
+        <!-- <template x-for="item in categories[1].items" :key="item.id"> -->
           <div class="menu-card">
             <img
               :src="`img/menu/${item.img}`"
@@ -223,7 +229,7 @@
     <!-- Menu Section End -->
 
     <!-- products section start -->
-    <section class="products" id="products" x-data="bags">
+    <section class="products" id="products" x-data="products">
       <h2><span>Produk Unggulan</span> Kami</h2>
       <!-- kalo masih ada masalah di tulisan lorem yg ga mau ke tengah, coba liat di menit ke 26.00-28.00 -->
       <p>
@@ -233,8 +239,8 @@
       </p>
 
       <div class="row">
-        <!-- <template x-for="(item, index) in items" x-key="index"> -->
-        <template x-for="item in categories[0].items" :key="item.id">
+        <template x-for="(item, index) in items" x-key="index">
+          <!-- <template x-for="item in categories[0].items" :key="item.id"> -->
           <div class="product-card">
             <div class="product-icons">
               <a href="#" @click.prevent="$store.cart.add(item)">
@@ -403,9 +409,9 @@
           Website ini dibuat untuk menambah wawasan dan kreatifitas.
           <br />
           <br />
-          Created by <a href="https://www.instagram.com/wjmelly/">Amelia Sari</a>. | &copy;
+          Created by
+          <a href="https://www.instagram.com/wjmelly/">Amelia Sari</a>. | &copy;
           2024.
-
         </p>
       </div>
     </footer>

@@ -752,9 +752,11 @@ footer .credit a {
   html {
     font-size: 62.5%;
   }
+
   #hamburger-menu {
     display: inline-block;
   }
+
   .navbar .navbar-nav {
     position: absolute;
     top: 100%;
@@ -764,9 +766,11 @@ footer .credit a {
     height: 100vh;
     transition: 0.3s;
   }
+  
   .navbar .navbar-nav.active {
     right: 0;
   }
+
   .navbar .navbar-nav a {
     color: var(--darkpink); /* warna huruf sidebar */
     display: block;
@@ -840,4 +844,15 @@ footer .credit a {
   html {
     font-size: 55%;
   }
+
+  /* hero */
+  .hero .content p {
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--white);
+  text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+  /* mix-blend-mode: difference; */
+}
 }
