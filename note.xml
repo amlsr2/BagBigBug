@@ -6,3 +6,5 @@ yang belum:
 3. habis klik checkout, data di cart ilang semua, itu functionnya ada di alpine file app js
 4. kalo scroll cart mentok, jangan sampe diluar cart bisa ke scroll ketika cursor ada didalam pop up cart, kecuali cursor ada diluar pop up cart itu gapapa bisa scroll
 5. buat tombol checkout jangan di link ke pembayaran online ilangin aja
+6. star dibuat simple
+7. tambahin remove item di samping belanjaan di shopping cart

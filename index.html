@@ -23,7 +23,7 @@
     <!-- CSS MY STYLE -->
     <link rel="stylesheet" href="/CSS/style.css" />
 
-        <!-- Alpine data dan store -->
+    <!-- Alpine data dan store -->
     <script defer src="/src/app.js"></script>
 
     <!-- AlpineJS -->
@@ -154,6 +154,9 @@
             </form>
           </div>
         </div>
+        <div class="cart-footer">
+          <p>Happy Shopping!</p>
+        </div>
       </div>
       <!-- shopping cart end -->
     </nav>
@@ -213,7 +216,7 @@
 
       <div class="row">
         <template x-for="(item, index) in items" x-key="index">
-        <!-- <template x-for="item in categories[1].items" :key="item.id"> -->
+          <!-- <template x-for="item in categories[1].items" :key="item.id"> -->
           <div class="menu-card">
             <img
               :src="`img/menu/${item.img}`"
@@ -276,63 +279,23 @@
             </div>
             <div class="product-content">
               <h3 x-text="item.name"></h3>
+
               <div class="product-stars">
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
+                <template x-for="i in (item.stars || 5)" :key="i">
+                  <svg
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <use href="img/feather-sprite.svg#star"></use>
+                  </svg>
+                </template>
               </div>
+
               <div class="product-price">
                 <span x-text="rupiah(item.price)"></span>
               </div>

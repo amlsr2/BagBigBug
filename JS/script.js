@@ -72,3 +72,32 @@ window.onclick = (e) => {
     itemDetailModal.style.display = "none";
   }
 };
+
+// scroll di shopping-cart
+// Setelah add ke cart, scroll cart-scroll-container
+$store.cart.add(item);
+
+setTimeout(() => {
+  const container = document.querySelector(".cart-scroll-container");
+  if (container) {
+    container.scrollTo({
+      top: container.scrollHeight,
+      behavior: "smooth"
+    });
+  }
+}, 100);
+
+
+// stars di products
+window.addEventListener("DOMContentLoaded", () => {
+  const template = document.getElementById("star-template");
+  if (!template) return;
+
+  document.querySelectorAll(".product-stars").forEach((container) => {
+    const count = parseInt(container.dataset.stars) || 5;
+    for (let i = 0; i < count; i++) {
+      const star = template.content.cloneNode(true);
+      container.appendChild(star);
+    }
+  });
+});

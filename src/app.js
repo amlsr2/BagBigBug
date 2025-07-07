@@ -285,3 +285,4 @@ const rupiah = (number) => {
     minimumFractionDigits: 0,
   }).format(number);
 };
+
