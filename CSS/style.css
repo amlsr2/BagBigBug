@@ -168,7 +168,7 @@ body {
   transition: 0.3s linear;
   display: flex;
   flex-direction: column;
-  padding-bottom: 6rem;
+  padding-bottom: 8rem;
   /*agar scroll bisa sampai ke button Checkout*/
 }
 
@@ -245,15 +245,15 @@ body {
   text-align: center;
 }
 
-.cart-footer {
-  margin: 1rem;
+/* .cart-footer {
+  margin: 2rem;
   color: var(--very2darkpink);
   text-align: center;
   font-size: 1.5rem;
   font-weight: bold;
   flex-shrink: 0;
   border-radius: 5px;
-}
+} */
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* Checkout Form */

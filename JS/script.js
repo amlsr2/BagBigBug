@@ -85,7 +85,7 @@ setTimeout(() => {
       behavior: "smooth"
     });
   }
-}, 100);
+}, 300);
 
 
 // stars di products
