@@ -37,11 +37,11 @@
 
     <!-- Midtrans -->
     <!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
-    <script
+    <!-- <script
       type="text/javascript"
       src="https://app.sandbox.midtrans.com/snap/snap.js"
       data-client-key="Mid-client-KhETns1nWma7_Eo0"
-    ></script>
+    ></script> -->
     <!-- Note: replace with src="https://app.midtrans.com/snap/snap.js" for Production environment -->
   </head>
 
@@ -79,7 +79,7 @@
       <!-- search form end -->
 
       <!-- shopping cart start -->
-      <div class="shopping-cart">
+      <div id="cartPanel" class="shopping-cart active">
         <div class="cart-scroll-container">
           <template
             x-for="(item, index) in $store.cart.items"
@@ -111,7 +111,6 @@
           <h4 x-show="$store.cart.items.length">
             Total : <span x-text="rupiah($store.cart.total)"></span>
           </h4>
-
           <div class="form-container" x-show="$store.cart.items.length">
             <form action="" id="checkoutForm">
               <input
@@ -142,7 +141,6 @@
                   autocomplete="off"
                 />
               </label>
-
               <button
                 class="checkout-button disabled"
                 type="submit"

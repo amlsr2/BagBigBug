@@ -4,9 +4,9 @@
   --bg: #010101;
   --darkpink: rgb(255, 149, 165);
   --verydarkpink: rgb(255, 118, 139);
-  --very2darkpink:rgb(254, 97, 121);
-  --very3darkpink:rgb(255, 73, 101);
-  --very4darkpink:rgb(255, 62, 91);
+  --very2darkpink: rgb(254, 97, 121);
+  --very3darkpink: rgb(255, 73, 101);
+  --very4darkpink: rgb(255, 62, 91);
   --transparent: rgba(255, 255, 255, 0);
   --pinktransparent: rgba(241, 156, 168, 0.305);
 }
@@ -160,6 +160,8 @@ body {
   display: flex;
   flex-direction: column;
   padding-bottom: 4rem; /*agar scroll bisa sampai ke button Checkout*/
+  transition: transform 0.3s ease;
+  transform: translateX(100%); /* sembunyikan cart */
 }
 
 .cart-scroll-container {
@@ -169,19 +171,18 @@ body {
   flex: 1;
 }
 
-/* ------------------------------------------------------------------------- added start */
-/* .cart-scroll-container::-webkit-scrollbar {
+.cart-scroll-container::-webkit-scrollbar {
   width: 6px;
 }
 
 .cart-scroll-container::-webkit-scrollbar-thumb {
   background-color: #ccc;
   border-radius: 3px;
-} */
-/* ------------------------------------------------------------------------- added end */
+}
 
 .shopping-cart.active {
   right: 0;
+  transform: translateX(0); /* tampilkan cart */
 }
 
 .shopping-cart .cart-item {
@@ -857,6 +858,6 @@ footer .credit a {
   }
 
   .shopping-cart {
-  padding-bottom: 10rem; /*agar scroll bisa sampai ke button Checkout*/
-}
+    padding-bottom: 10rem; /*agar scroll bisa sampai ke button Checkout*/
+  }
 }

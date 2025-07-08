@@ -73,21 +73,6 @@ window.onclick = (e) => {
   }
 };
 
-// scroll di shopping-cart
-// Setelah add ke cart, scroll cart-scroll-container
-$store.cart.add(item);
-
-setTimeout(() => {
-  const container = document.querySelector(".cart-scroll-container");
-  if (container) {
-    container.scrollTo({
-      top: container.scrollHeight,
-      behavior: "smooth"
-    });
-  }
-}, 300);
-
-
 // stars di products
 window.addEventListener("DOMContentLoaded", () => {
   const template = document.getElementById("star-template");

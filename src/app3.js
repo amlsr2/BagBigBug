@@ -1,14 +1,6 @@
-// Rupiah IDR
-document.addEventListener("alpine:init", () => {
-  Alpine.magic("rupiah", () => (value) => {
-    return new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR",
-      minimumFractionDigits: 0,
-    }).format(value);
-  });
+// INI PEMBAYARAN MENGGUNAKAN WHATSAPP
 
-  // Data
+document.addEventListener("alpine:init", () => {
   Alpine.data("products", () => ({
     items: [
       { id: 1, name: "Luna Elegant", img: "baggie-1.png", price: 45000 },
@@ -90,8 +82,6 @@ document.addEventListener("alpine:init", () => {
       { id: 9, name: "Hazel Chicc", img: "baggie-9.png", price: 470000 },
     ],
   }));
-
-  // perhitungan di cart
   Alpine.store("cart", {
     items: [],
     total: 0,
@@ -104,8 +94,7 @@ document.addEventListener("alpine:init", () => {
       if (!cartItem) {
         this.items.push({ ...newItem, quantity: 1, total: newItem.price });
         this.quantity++;
-        // this.total += newItem.price;
-        this.recalculate();
+        this.total += newItem.price;
       } else {
         // jika barang sudah ada, cek apakah barang beda atau sama dengan yang ada di cart
         this.items = this.items.map((item) => {
@@ -117,9 +106,7 @@ document.addEventListener("alpine:init", () => {
             item.quantity++;
             item.total = item.price * item.quantity;
             this.quantity++;
-            // this.total += item.price;
-            this.recalculate();
-
+            this.total += item.price;
             return item;
           }
         });
@@ -140,8 +127,7 @@ document.addEventListener("alpine:init", () => {
             item.quantity--;
             item.total = item.price * item.quantity;
             this.quantity--;
-            // this.total -= item.price;
-            this.recalculate();
+            this.total -= item.price;
             return item;
           }
         });
@@ -149,28 +135,13 @@ document.addEventListener("alpine:init", () => {
         // jika barangnya sisa 1
         this.items = this.items.filter((item) => item.id !== id);
         this.quantity--;
-        // this.total -= cartItem.price;
-        this.recalculate();
+        this.total -= cartItem.price;
       }
-    },
-    // reset
-    reset() {
-      this.items.splice(0, this.items.length);
-      this.total = 0;
-      this.quantity = 0;
-    },
-    // menghitung ulang
-    recalculate() {
-      this.total = this.items.reduce(
-        (sum, item) => sum + item.price * item.quantity,
-        0
-      );
-      this.quantity = this.items.reduce((sum, item) => sum + item.quantity, 0);
     },
   });
 });
 
-// Form Validation, checkout button tidak bisa di klik sampai semua form data terisi
+//  Form Validation
 const checkoutButton = document.querySelector(".checkout-button");
 checkoutButton.disabled = true;
 
@@ -189,25 +160,33 @@ form.addEventListener("keyup", function () {
   checkoutButton.classList.remove("disabled");
 });
 
-// cheokout function untill finish
-document
-  .querySelector(".checkout-button")
-  .addEventListener("click", function (e) {
-    e.preventDefault();
-    // Reset cart dengan cara reaktif
-    Alpine.store("cart").reset();
-    // Tutup panel cart
-    document.querySelector("#cartPanel")?.classList.remove("active");
-    // hapus costumer detail
-    form.reset();
-    // Tampilkan alert
-    alert("Barang berhasil dipesan!");
-  });
-
-// Tutup cart otomatis saat refresh
-window.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#cartPanel")?.classList.remove("active");
+//  kirim data ketika tombol checkout di klik
+checkoutButton.addEventListener("click", async function (e) {
+  e.preventDefault();
+  const formData = new FormData(form);
+  const data = new URLSearchParams(formData);
+  const objData = Object.fromEntries(data);
+  const message = formatMessage(objData);
+  window.open(
+    "http://wa.me/62895372029097?text=" + encodeURIComponent(message)
+  );
+  console.log(objData);
 });
+
+// format pesan whatsapp
+const formatMessage = (obj) => {
+  return `Data Customer
+  Nama: ${obj.name}
+  Email: ${obj.email}
+  No HP: ${obj.phone}
+  Data Pesanan
+  ${JSON.parse(obj.items).map(
+    (item) => `${item.name} (${item.quantity} x ${rupiah(item.total)}) \n
+  `
+  )}
+TOTAL: ${rupiah(obj.total)}
+Terima kasih.`;
+};
 
 //Konversi ke Rupiah
 const rupiah = (number) => {
